@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE nta PUBLIC '-//Uppaal Team//DTD Flat System 1.1//EN' 'http://www.it.uu.se/research/group/darts/uppaal/flat-1_2.dtd'>
+<nta>
+	<declaration>// Place global declarations here.
+chan G11_red, NUST_red, ZP_red, Chowk_red;</declaration>
+	<template>
+		<name x="5" y="5">G11</name>
+		<declaration>// Place local declarations here.
+clock timer;</declaration>
+		<location id="id0" x="-34" y="-76">
+			<name x="-59" y="-68">Yellow</name>
+			<label kind="invariant" x="-59" y="-51">timer&lt;=5</label>
+		</location>
+		<location id="id1" x="-229" y="-8">
+			<name x="-239" y="-42">Green</name>
+			<label kind="invariant" x="-239" y="9">timer&lt;=45</label>
+		</location>
+		<location id="id2" x="-399" y="-76">
+			<name x="-416" y="-60">Red</name>
+		</location>
+		<init ref="id2"/>
+		<transition>
+			<source ref="id0"/>
+			<target ref="id2"/>
+			<label kind="guard" x="-230" y="-161">timer==5</label>
+			<label kind="synchronisation" x="-264" y="-187">G11_red!</label>
+			<nail x="-77" y="-136"/>
+			<nail x="-357" y="-136"/>
+		</transition>
+		<transition>
+			<source ref="id1"/>
+			<target ref="id0"/>
+			<label kind="guard" x="-153" y="-34">timer==45</label>
+			<label kind="assignment" x="-144" y="-8">timer=0</label>
+		</transition>
+		<transition>
+			<source ref="id2"/>
+			<target ref="id1"/>
+			<label kind="synchronisation" x="-347" y="-25">Chowk_red?</label>
+			<label kind="assignment" x="-347" y="-8">timer=0</label>
+		</transition>
+	</template>
+	<template>
+		<name>NUST</name>
+		<declaration>clock timer;</declaration>
+		<location id="id3" x="102" y="-76">
+			<name x="77" y="-67">Yellow</name>
+			<label kind="invariant" x="77" y="-51">timer&lt;=5</label>
+		</location>
+		<location id="id4" x="-51" y="-17">
+			<name x="-61" y="-51">Green</name>
+			<label kind="invariant" x="-61" y="0">timer&lt;=45</label>
+		</location>
+		<location id="id5" x="-221" y="-68">
+			<name x="-238" y="-52">Red</name>
+		</location>
+		<init ref="id5"/>
+		<transition>
+			<source ref="id3"/>
+			<target ref="id5"/>
+			<label kind="guard" x="-94" y="-102">timer==5</label>
+			<label kind="synchronisation" x="-128" y="-128">NUST_red!</label>
+			<nail x="42" y="-144"/>
+			<nail x="-178" y="-144"/>
+		</transition>
+		<transition>
+			<source ref="id4"/>
+			<target ref="id3"/>
+			<label kind="guard" x="-9" y="-43">timer==45</label>
+			<label kind="assignment" x="0" y="-17">timer=0</label>
+		</transition>
+		<transition>
+			<source ref="id5"/>
+			<target ref="id4"/>
+			<label kind="synchronisation" x="-203" y="-34">G11_red?</label>
+			<label kind="assignment" x="-203" y="-17">timer=0</label>
+		</transition>
+	</template>
+	<template>
+		<name>ZP</name>
+		<declaration>clock timer;</declaration>
+		<location id="id6" x="-17" y="-68">
+			<name x="-42" y="-60">Yellow</name>
+			<label kind="invariant" x="-42" y="-43">timer&lt;=5</label>
+		</location>
+		<location id="id7" x="-195" y="-8">
+			<name x="-205" y="-42">Green</name>
+			<label kind="invariant" x="-205" y="9">timer&lt;=45</label>
+		</location>
+		<location id="id8" x="-357" y="-68">
+			<name x="-374" y="-52">Red</name>
+		</location>
+		<init ref="id8"/>
+		<transition>
+			<source ref="id6"/>
+			<target ref="id8"/>
+			<label kind="guard" x="-196" y="-152">timer==5</label>
+			<label kind="synchronisation" x="-230" y="-178">ZP_red!</label>
+			<nail x="-43" y="-127"/>
+			<nail x="-323" y="-127"/>
+		</transition>
+		<transition>
+			<source ref="id7"/>
+			<target ref="id6"/>
+			<label kind="guard" x="-153" y="-34">timer==45</label>
+			<label kind="assignment" x="-144" y="-8">timer=0</label>
+		</transition>
+		<transition>
+			<source ref="id8"/>
+			<target ref="id7"/>
+			<label kind="synchronisation" x="-347" y="-25">NUST_red?</label>
+			<label kind="assignment" x="-347" y="-8">timer=0</label>
+		</transition>
+	</template>
+	<template>
+		<name>Chowk</name>
+		<declaration>clock timer;</declaration>
+		<location id="id9" x="-17" y="-68">
+			<name x="-42" y="-60">Yellow</name>
+			<label kind="invariant" x="-42" y="-43">timer&lt;=5</label>
+		</location>
+		<location id="id10" x="-195" y="-8">
+			<name x="-205" y="-42">Green</name>
+			<label kind="invariant" x="-205" y="9">timer&lt;=90</label>
+		</location>
+		<location id="id11" x="-365" y="-68">
+			<name x="-382" y="-52">Red</name>
+		</location>
+		<init ref="id10"/>
+		<transition>
+			<source ref="id9"/>
+			<target ref="id11"/>
+			<label kind="guard" x="-196" y="-144">timer==5</label>
+			<label kind="synchronisation" x="-230" y="-170">Chowk_red!</label>
+			<nail x="-43" y="-119"/>
+			<nail x="-323" y="-119"/>
+		</transition>
+		<transition>
+			<source ref="id10"/>
+			<target ref="id9"/>
+			<label kind="guard" x="-153" y="-34">timer==90</label>
+			<label kind="assignment" x="-144" y="-8">timer=0</label>
+		</transition>
+		<transition>
+			<source ref="id11"/>
+			<target ref="id10"/>
+			<label kind="synchronisation" x="-347" y="-25">ZP_red?</label>
+			<label kind="assignment" x="-347" y="-8">timer=0</label>
+		</transition>
+	</template>
+	<system>// Place template instantiations here.
+
+// List one or more processes to be composed into a system.
+system G11, NUST, ZP, Chowk;</system>
+	<queries>
+		<query>
+			<formula>A[] Chowk.Green imply   (G11.Red and NUST.Red and ZP.Red)
+			</formula>
+			<comment>
+			</comment>
+		</query>
+		<query>
+			<formula>A[] not (G11.Green and NUST.Green and ZP.Green and Chowk.Green)
+			</formula>
+			<comment>
+			</comment>
+		</query>
+		<query>
+			<formula>A[] not deadlock
+			</formula>
+			<comment>
+			</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; Chowk.Green
+			</formula>
+			<comment>
+			</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; NUST.Green
+			</formula>
+			<comment>
+			</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; G11.Green
+			</formula>
+			<comment>
+			</comment>
+		</query>
+		<query>
+			<formula>E&lt;&gt; ZP.Green
+			</formula>
+			<comment>
+			</comment>
+		</query>
+	</queries>
+</nta>
